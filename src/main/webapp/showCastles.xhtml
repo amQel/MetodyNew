@@ -28,7 +28,9 @@
       
       <h:column>
         <f:facet name="header">#{msg.castleBuiltDate}</f:facet>
-        #{castles.builtDate}
+        <h:outputText value="#{castles.builtDate}">
+        	<f:convertDateTime pattern="yyyy/MM/dd"/>
+        </h:outputText>
       </h:column>
       
       <h:column>
