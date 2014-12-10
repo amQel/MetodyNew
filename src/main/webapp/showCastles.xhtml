@@ -9,7 +9,11 @@
 	
     <h:form>
     
-     <h:dataTable value="#{castleBean.allCastles}" var="castles">
+     <h:dataTable value="#{castleBean.allCastles}" var="castles"
+     			styleClass="employeeTable"
+   headerClass="employeeTableHeader"
+   rowClasses="employeeTableOddRow,employeeTableEvenRow" >
+    			
       <f:facet name="header">#{msg.hereAreCastles}</f:facet>
       
       <h:column>
@@ -54,7 +58,12 @@
       </h:column>
       
      </h:dataTable>
+     <h:commandLink action="addCastle?faces-redirect=true">
+			 <h:outputText value="#{msg.addNewCastle}" />
+	  </h:commandLink>
     </h:form>
+    
+   	  
       
 	</ui:define>
 	

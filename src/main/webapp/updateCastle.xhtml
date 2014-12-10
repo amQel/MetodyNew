@@ -15,12 +15,12 @@
 				<br/><br/>
 				
 				<h:outputText value="#{msg.castleId}" />
-				<br/>
-				<h:inputText id="castleId" value="#{castleBean.castleToUpdate.castleId}"
-					validator="#{castleBean.castleIdValidator}" required="#{true}">
+				
+				<h:inputText id="castleId" value="#{castleBean.castleToUpdate.castleId}" readonly = "true">
+				
 				</h:inputText>
 
-				<br/>
+				<br/><br/>
 				<h:outputText value="#{msg.castleBuiltDate}" />
 				
 				<rich:calendar value="#{castleBean.castleToUpdate.builtDate}"
@@ -28,7 +28,7 @@
 					cellWidth="24px" cellHeight="22px" style="width:200px">
 					<a4j:ajax render="messages" execute="@this" />
 				</rich:calendar>
-				<br/>
+				<br/><br/>
 				<h:outputText value="#{msg.castleType}" />
 				<br/>
 				<h:selectOneRadio value="#{castleBean.castleToUpdate.castleType}">
@@ -36,19 +36,19 @@
 				   	<f:selectItem itemValue="Modern" itemLabel="Modern" />
 				   	<f:selectItem itemValue="Neither" itemLabel="Neither" />
 				</h:selectOneRadio>
-				<br/>
+				<br/><br/>
 				<h:outputText value="#{msg.castleCondition}" /><br/>
 				<h:inputTextarea cols="5" rows="10" value="#{castleBean.castleToUpdate.condition}"/>
-				<br/>
+				<br/><br/>
 				<h:outputText value="#{msg.castleMaterial}" /><br/>
 				<h:selectOneMenu value="#{castleBean.castleToUpdate.material}">
 				   	<f:selectItem itemValue="Brick" itemLabel="Brick" />
 				   	<f:selectItem itemValue="Wood" itemLabel="Wood" />
 				   	<f:selectItem itemValue="Stone" itemLabel="Stone" />
 				</h:selectOneMenu>
-			<br/>
+			<br/><br/>
 			
-			<h:commandButton value="#{msg.addCastleConfirm}"
+			<h:commandButton value="#{msg.updateCastleConfirm}"
 				action="#{castleBean.afterUpdate}" />
 
 
