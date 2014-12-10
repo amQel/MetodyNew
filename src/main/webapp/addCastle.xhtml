@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+
+		<h:form id="castleForm">
+
+				<h:outputText value="#{msg.castleName}" />
+				<h:inputText id="castleName" value="#{castleBean.castle.castleName}" required="#{true}"/>
+				<br/><br/>
+				
+				<h:outputText value="#{msg.castleId}" />
+				<br/>
+				<h:inputText id="castleId" value="#{castleBean.castle.castleId}"
+					validator="#{castleBean.castleIdValidator}" required="#{true}">
+				</h:inputText>
+
+				<br/>
+				<h:outputText value="#{msg.castleBuiltDate}" />
+				
+				<rich:calendar value="#{castleBean.castle.builtDate}"
+					id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
+					cellWidth="24px" cellHeight="22px" style="width:200px">
+					<a4j:ajax render="messages" execute="@this" />
+				</rich:calendar>
+				<br/>
+				<h:outputText value="#{msg.castleType}" />
+				<br/>
+				<h:selectOneRadio value="#{castleBean.castle.castleType}">
+				   	<f:selectItem itemValue="Gothic" itemLabel="Gothic" />
+				   	<f:selectItem itemValue="Modern" itemLabel="Modern" />
+				   	<f:selectItem itemValue="Neither" itemLabel="Neither" />
+				</h:selectOneRadio>
+				<br/>
+				<h:outputText value="#{msg.castleCondition}" /><br/>
+				<h:inputTextarea cols="5" rows="10" value="#{castleBean.castle.condition}"/>
+				<br/>
+				<h:outputText value="#{msg.castleMaterial}" /><br/>
+				<h:selectOneMenu value="#{castleBean.castle.material}">
+				   	<f:selectItem itemValue="Brick" itemLabel="Brick" />
+				   	<f:selectItem itemValue="Wood" itemLabel="Wood" />
+				   	<f:selectItem itemValue="Stone" itemLabel="Stone" />
+				</h:selectOneMenu>
+			<br/>
+			
+			<h:commandButton value="#{msg.addCastleConfirm}"
+				action="#{castleBean.addCastle}" />
+
+
+			<h:panelGrid>
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

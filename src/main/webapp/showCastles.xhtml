@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	
+	<ui:define name="content">
+	
+    <h:form>
+    
+     <h:dataTable value="#{castleBean.allCastles}" var="castles">
+      <f:facet name="header">#{msg.hereAreCastles}</f:facet>
+      
+      <h:column>
+        <f:facet name="header">#{msg.castleName}</f:facet>
+        #{castles.castleName}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.castleId}</f:facet>
+        #{castles.castleId}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.castleBuiltDate}</f:facet>
+        #{castles.builtDate}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.castleType}</f:facet>
+        #{castles.castleType}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.castleCondition}</f:facet>
+        #{castles.condition}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.castleMaterial}</f:facet>
+        #{castles.material}
+      </h:column>
+      
+      
+      <h:column>
+        <f:facet name="header">#{msg.deleteCastles}</f:facet>
+        <h:commandLink value="#{msg.delete}" action="#{castleBean.deleteCastle}"/>
+      </h:column>
+      
+       <h:column>
+        <f:facet name="header">#{msg.updateCastles}</f:facet>
+        <h:commandLink value="#{msg.update}" action="#{castleBean.updateCastle}"/>
+      </h:column>
+      
+     </h:dataTable>
+    </h:form>
+      
+	</ui:define>
+	
+</ui:composition>
